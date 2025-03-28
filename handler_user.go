@@ -34,9 +34,9 @@ func (config *apiConfig) handleCreateUser(w http.ResponseWriter, r *http.Request
 		respondWithError(w,400,fmt.Sprintf("couldn't create user:%s",err))
 		return
 	}
-	respondWithJson(w,200,DatabaseUserToUser(user))
+	respondWithJson(w,201,DatabaseUserToUser(user))
 }
 
-func (config *apiConfig) handleGetUser(w http.ResponseWriter, r *http.Request){
-	
+func (config *apiConfig) handleGetUser(w http.ResponseWriter, r *http.Request,user database.User){
+	respondWithJson(w,200,DatabaseUserToUser(user))
 }
